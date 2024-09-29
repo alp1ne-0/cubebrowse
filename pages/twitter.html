@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CubeTwitter™</title>
+  <link rel="stylesheet" type="text/css" href="/index.css"/>
+	<script>
+cookie = {
+	posts: [],
+	id: 0,
+}
+
+window.addEventListener('load', () => {
+	form = document.getElementById('postForm');
+	postsElem = document.getElementById('posts');
+
+	function addPost(post) {
+		let views = document.createElement('div');
+		views.innerText = '0 views · 0 likes · 0 retwitters'
+
+		let p = document.createElement('p');
+		p.innerText = post.body;
+
+		let h3 = document.createElement('h3');
+		h3.innerText = '@' + post.username;
+
+		let article = document.createElement('article');
+		article.append(h3);
+		article.append(p);
+		article.append(views);
+		article.classList = 'border';
+		article.style.flexBasis = "calc(100% / 3 - 9px / 3 * (3 - 1))";
+
+		article.style.margin = "0";
+		article.id = post.id;
+
+		postsElem.append(article);
+	}
+
+	if (localStorage.getItem('postdata') === null) {	
+		localStorage.setItem('postdata', JSON.stringify(cookie));
+	} else {
+		cookie = JSON.parse(localStorage.getItem('postdata'));
+		for (let post of cookie.posts) {
+			addPost(post);
+		}
+	}
+
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
+
+		cookie.id += 1;
+
+		let post = { body: e.currentTarget.body.value, username: e.currentTarget.username.value, id: cookie.id };
+		e.currentTarget.body.value = '';
+
+		cookie.posts.push(post);
+
+		localStorage.setItem('postdata', JSON.stringify(cookie));
+		addPost(post);
+	});
+});
+	</script>
+</head>
+<body class="included"> 
+  <h1><a href="/pages/welcome.html" class='logo'><img src="/logo.png" alt="CubeBrowse™ Logo"/></a> CubeTwitter™</h1>
+
+	<form id="postForm" style="width: fit-content;">
+		<div style="width: 100%"><input type="text" style="width: 100%" placeholder="Username" aria-label="Username" name="username" required/></div>
+		<textarea id="body" name="body" rows="5" cols="33" placeholder="Post body" aria-label="Post body" required></textarea>
+		<div><button>Post</button></div>
+	</form>
+
+	<h2>Posts</h2>
+
+	<div id='posts' class="flex" style="flex-wrap: wrap">
+	</div>
+</body>
+</html>

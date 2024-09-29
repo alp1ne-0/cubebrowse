@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CubeGPT™ Web Portal</title>
+  <link rel="stylesheet" type="text/css" href="/index.css"/>
+  <script src="/elizabot.js"></script>
+  <script src="/elizadata.js"></script>
+  <script>
+    gpt = new ElizaBot();
+
+    function addThing(side, text) {
+      let strong = document.createElement('strong');
+      strong.innerText = side;
+
+      let p = document.createElement('p');
+      p.style = "margin: 0";
+      p.innerText = ' '+text
+      p.prepend(strong);
+
+      let div = document.createElement('div');
+      div.className = "border";
+      div.style = "margin-bottom: 1em;";
+      div.append(p)
+
+      document.getElementById('textbox').append(div);
+    }
+
+    function reset() {
+      gpt.reset();
+
+      document.getElementById('textbox').textContent = '';
+
+      var starting = gpt.getInitial();
+      addThing("Bot", starting);
+    }
+
+    window.addEventListener('load', () => {
+      reset();
+
+			let button = document.getElementById('button');
+
+      document.getElementById("textform").addEventListener('submit', e => {
+        e.preventDefault();
+        addThing('You', e.currentTarget.text.value);
+
+        document.getElementById('text').value = '';
+
+        addThing('Bot', gpt.transform(e.currentTarget.text.value));
+
+        button.scrollIntoView(false);
+      });
+    });
+  </script>
+</head>
+<body class="included">
+  <h1><a href="/pages/welcome.html" class='logo'><img src="/logo.png" alt="CubeBrowse™ Logo"/></a> CubeGPT™ Web Portal</h1>
+
+  <div id="textbox"></div>
+
+  <div class="flex" style="margin-bottom: 9px">
+    <form id="textform" style="flex-grow: 1; width: 100%;">
+      <input type="text" name="text" id="text" style="width: 100%">
+    </form>
+    <button onclick="reset()" type="button" id="button">Reset</button>
+  </div>
+
+	<hr/>
+
+	<p><small>Powered by <a href="https://www.masswerk.at/elizabot/">elizabot.js</a>.</small></p>
+</body>
+</html>

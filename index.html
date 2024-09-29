@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/index.css"/>
+  <link rel="icon" href="logo.png" type="image/png"/>
+  <title>CubeBrowse™ User Interface Portal</title>
+  <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <div class="over middle">
+    <div class="scene">
+      <div class="cube show-front" id="cube">
+        <div class="face front focus">
+          <iframe onLoad="increment()" src="/pages/welcome.html"></iframe>
+        </div>
+        <div class="face back">
+          <iframe onLoad="increment()" src="about:blank"></iframe>
+        </div>
+        <div class="face right">
+          <iframe onLoad="increment()" src="about:blank"></iframe>
+        </div>
+        <div class="face left">
+          <iframe onLoad="increment()" src="about:blank"></iframe>
+        </div>
+        <div class="face top">
+          <iframe onLoad="increment()" src="about:blank"></iframe>
+        </div>
+        <div class="face bottom">
+          <iframe onLoad="increment()" src="about:blank"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="over header">
+    <div class="buttonContainer">
+      <div class="goup"   ><button type="button" onclick='buttonPressed("up")'>↑</button></div>
+      <div class="goleft" ><button type="button" onclick='buttonPressed("left")'>←</button></div>
+      <div class="goright"><button type="button" onclick='buttonPressed("right")'>→</button></div>
+      <div class="godown" ><button type="button" onclick='buttonPressed("down")'>↓</button></div>
+      <noscript>Sorry, but this page requires javascript to work properly!</noscript>
+      <div id="url">
+        <form id="urlForm">
+          <input type="text" name="url" id="urlInput" placeholder="URL" aria-label="URL">
+          <button type="button" onclick="back()">←</button>
+          <button type="button" onclick="forward()">→</button>
+          <button type="button" onclick="reload()">⟳</button>
+          <span><span id="points"></span> points</span>
+        </form>
+      </div>
+      <nav style="pointer-events: auto;">
+        <a style="cursor: pointer" onclick="updateUrl('/pages/welcome.html')">home</a>
+        ·
+        <a style="cursor: pointer" onclick="updateUrl('/pages/manual.html')">help</a>
+        ·
+        <a style="cursor: pointer" onclick="updateUrl('/pages/shop.html')">shop</a>
+      </nav>
+    </div>
+  </div>
+
+  <div id="tubularbells" class="over footer" style="display: none;">
+    <img src="images/bell-left.png"  onclick="tubleft()" style="cursor: pointer; margin-right: 9px"/>
+    <img src="images/bell-right.png" onclick="tubright()" style="cursor: pointer; position: absolute; top: 0"/>
+  </div>
+</body>
+</html>

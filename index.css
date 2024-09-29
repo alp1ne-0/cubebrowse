@@ -1,0 +1,470 @@
+:root
+{
+  --color-accent:       #4B61DD;
+	--color-accent-light: #5769E0;
+	--color-accent-dark:  #424b7f;
+
+	--cube-unit: calc(10vh + 300px);
+
+	font-family: Helvetica;
+
+	counter-reset: h2 h3 h4;
+}
+
+small
+{
+  font-size: medium;
+}
+
+button
+{
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  transform-origin: 0% 0%;
+  cursor: pointer;
+}
+
+button:hover
+{
+  translate: 0 1px 0;
+}
+
+button:active
+{
+  translate: 0 2px 0;
+}
+
+input, textarea, button
+{
+  font-family: Noto Sans, sans-serif;
+  font-size: small;
+}
+
+input[type='text'], textarea
+{
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+*
+{
+	box-sizing: border-box;
+
+  scrollbar-color: black #0000;
+  scrollbar-width: thin;
+}
+
+.unpleasantGradient
+{
+  background: linear-gradient(#23D625, #FF34FD, #9E5300);
+}
+
+.simpleGradient
+{
+  background: linear-gradient(white, var(--color-accent-light));
+}
+
+.everchangingGradient
+{
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, purple, red);
+  background-size: 50% 50%;
+  animation: 10s linear infinite gradient;
+}
+
+@keyframes gradient
+{
+  from {
+    backdrop-filter: hue-rotate(0deg);
+  }
+  to {
+    backdrop-filter: hue-rotate(360deg);
+  }
+}
+
+body
+{
+	margin: 0;
+  width: 100vw;
+  height: 100vh;
+	/*background: linear-gradient(white, #B7C0F1);*/
+}
+
+body.included
+{
+	padding: 9px;
+	background-color: #FFFd;
+}
+
+iframe
+{
+	width: 100%;
+	height: 100%;
+	border: 1px solid black;
+}
+
+:focus
+{
+  outline: 1px solid var(--color-accent);
+}
+
+/* CUBE */
+
+.buttonContainer
+{
+	width: calc(100px + 2 * var(--cube-unit));
+	height: calc(100px + 2 * var(--cube-unit));
+	position: relative;
+}
+
+.goup button, .godown button, .goright button, .goleft button
+{
+	font-size: large;
+	width: 27px;
+	height: 27px;
+
+	text-align: center;
+	line-height: 27px;
+	pointer-events: auto;
+}
+
+#url
+{
+	pointer-events: auto;
+}
+
+.goup, .godown, .goright, .goleft
+{
+	position: absolute;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.goup
+{
+	width: 100%;
+
+	left: 0;
+	right: 0;
+	top: 0;
+}
+.godown
+{
+	width: 100%;
+
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.goright
+{
+	height: 100%;
+
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+.goleft
+{
+	height: 100%;
+
+	left: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.buttonContainer nav
+{
+  right: 0;
+  position: absolute;
+  top: 0;
+}
+
+@media (width <= 1025px) {
+  :root {
+    --cube-unit: 48vw;
+  }
+  .over.middle {
+    overflow: hidden;
+  }
+  .goup, .godown, .goright, .goleft
+  {
+    position: static;
+    display: unset;
+    
+  }
+  .buttonContainer
+  {
+    font-size: x-large;
+    width: calc(100px + 2.2 * var(--cube-unit));
+    height: calc(100px + 2.2 * var(--cube-unit));
+    position: relative;
+  }
+  .goup button, .godown button, .goright button, .goleft button
+  {
+    font-size: inherit;
+    width: 3.5vw;
+    height: 3.5vw;
+
+    text-align: center;
+    line-height: 100%;
+    pointer-events: auto;
+  }
+  .buttonContainer input, .buttonContainer button
+  {
+    font-size: inherit;
+  }
+}
+
+/* rest of cube */
+
+.over
+{
+	position: absolute;
+	left: 0;
+
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.over.header
+{
+	top: 0;
+	height: 100%;
+	pointer-events: none;
+}
+
+.over.footer
+{
+  left: 0;
+  top: 0;
+  width: fit-content;
+  pointer-events: none;
+  margin-left: 9px;
+  display: unset;
+}
+
+.over.middle
+{
+	top: 0;
+
+	min-height: 100%;
+	width: 100%;
+}
+
+.scene
+{
+  width:  calc(2 * var(--cube-unit));
+  height: calc(2 * var(--cube-unit));
+  perspective: calc(3 * var(--cube-unit));
+}
+
+.cube
+{
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  transform-style: preserve-3d;
+	transition: transform 0.5s;
+	
+	font-size: xx-large;
+
+	translate: 0 0 calc(-1 * var(--cube-unit));
+}
+
+.face
+{
+  position: absolute;
+
+  width:  calc(2 * var(--cube-unit));
+  height: calc(2 * var(--cube-unit));	
+}
+
+.face:not(.focus)
+{
+	pointer-events: none;
+}
+
+.front  { transform: rotateY(  0deg) translateZ(var(--cube-unit)); }
+.right  { transform: rotateY( 90deg) translateZ(var(--cube-unit)); }
+.back   { transform: rotateY(180deg) translateZ(var(--cube-unit)); }
+.left   { transform: rotateY(-90deg) translateZ(var(--cube-unit)); }
+.top    { transform: rotateX( 90deg) translateZ(var(--cube-unit)); }
+.bottom { transform: rotateX(-90deg) translateZ(var(--cube-unit)); }
+
+.cube.show-front  { transform: rotateY(   0deg); }
+.cube.show-right  { transform: rotateY( -90deg); }
+.cube.show-back   { transform: rotateY(-180deg); }
+.cube.show-left   { transform: rotateY(  90deg); }
+.cube.show-top    { transform: rotateX( -90deg); }
+.cube.show-bottom { transform: rotateX(  90deg); }
+
+/* Paragraphs */
+
+p
+{
+	text-align: justify;
+	hyphens: auto;
+	line-height: 1.35;
+}
+
+.border > p
+{
+	text-align: left;
+}
+
+/* paragraph after another paragraph */
+p + p
+{
+	text-indent: 1.5em;
+	margin-top: 0;
+}
+
+/* paragraph before another paragraph */
+p:has(+ p)
+{
+	margin-bottom: 0;
+}
+
+.logo
+{
+  transition: filter 0.1s;
+}
+
+.logo:hover
+{
+  filter: saturate(1.5);
+}
+
+.logo:active
+{
+  transition: unset;
+  filter: saturate(2);
+}
+
+.logo > img
+{
+  vertical-align: middle;
+  height: 39px;
+}
+
+/* Headings */
+
+h1
+{
+	margin-top: -9px;
+	margin-left: -9px;
+	margin-right: -9px;
+
+	padding: 9px;
+
+	background-color: black;
+	color: white;
+	width: calc(100% + 18px);
+}
+
+h2::before
+{
+	counter-increment: h2;
+	counter-set: h3 0 h4 0;
+
+	content: counter(h2) " ";
+}
+
+h3::before
+{
+	counter-increment: h3;
+	counter-set: h4 0;
+
+	content: counter(h2) "." counter(h3) " ";
+}
+
+h4::before
+{
+	counter-increment: h4;
+
+	content: counter(h2) "." counter(h3) "." counter(h4) " ";
+}
+
+/* Links */
+
+a
+{
+	color: var(--color-accent);
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: var(--color-accent-light);
+	text-decoration: underline;
+}
+
+a:active
+{
+	color: var(--color-accent-dark);
+}
+
+a.external::after
+{
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234B61DD' d='M6 1h5v5L8.86 3.85 4.7 8 4 7.3l4.15-4.16zM2 3h2v1H2v6h6V8h1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1'/%3E%3C/svg%3E");
+}
+
+a.external:hover::after
+{
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235769E0' d='M6 1h5v5L8.86 3.85 4.7 8 4 7.3l4.15-4.16zM2 3h2v1H2v6h6V8h1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1'/%3E%3C/svg%3E");
+}
+
+a.external:active::after
+{
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23424b7f' d='M6 1h5v5L8.86 3.85 4.7 8 4 7.3l4.15-4.16zM2 3h2v1H2v6h6V8h1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1'/%3E%3C/svg%3E");
+}
+
+/* other */
+
+.flex
+{
+	display: flex;
+	gap: 9px;
+}
+
+.flex
+{
+  margin-bottom: 1em;
+}
+
+.border
+{
+	border: 1px solid black;
+	padding: 9px;
+}
+
+/* Don't fuck with line height if there's a <sup> element */
+
+sup
+{
+	vertical-align: 3.5px;
+}
+
+/* Misc */
+
+figcaption
+{
+	font-style: italic;
+}
+
+hr
+{
+	margin-left: -9px;
+	margin-right: -9px;
+
+	border: none;
+	border-bottom: 1px solid black;
+}

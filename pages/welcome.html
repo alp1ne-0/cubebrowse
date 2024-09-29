@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome!</title>
+  <link rel="stylesheet" type="text/css" href="/index.css"/>
+	<script>
+		function splitMobyDick(text) {
+		  return text.split(/(?<=[.!?]) /gm);
+		}
+
+		strings = [
+			"It's free!",
+			"You can't buy it, it's already free",
+			"Stop it.",
+			"This is free!",
+			"It's not a free trial, you don't need to put in your credit card info, you just have it. For free! For free??",
+			"This. Is. Free!",
+			"Okay... the script says now I have to quote Moby Dick at you.",
+			"\"Call me Ishmael.",
+			"Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
+			"It is a way I have of driving off the spleen, and regulating the circulation.",
+			"Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people’s hats off—then, I account it high time to get to sea as soon as I can.",
+			"This is my substitute for pistol and ball.",
+			"With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship.",
+			"There is nothing surprising in this.",
+			"If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.\"",
+			"I hate my job.",
+			"These cubebrowse guys are just a load of crap if you ask me.",
+			"Shit, my manager is coming around",
+			"\"There now is your insular city of the Manhattoes, belted round by wharves as Indian isles by coral reefs—commerce surrounds it with her surf.",
+			"Right and left, the streets take you waterward.",
+			"Its extreme down-town is the battery, where that noble mole is washed by waves, and cooled by breezes, which a few hours previous were out of sight of land.",
+			"Look at the crowds of water-gazers there.\"",
+			"I mean like, what do they even sell?",
+			"Cubebrowse, that is.",
+			"A cube? With webpages? That can't even display half of the websites you want to see?",
+			"Please.",
+			"What a load of crap.",
+			"Hey, you know, thanks for staying around.",
+			"Most people leave after \"Call me Ishmael\".",
+			{ text: "Here. I'll give you a few cube points.", function: () => window.top.postMessage(5) },
+			"As a token of my appreciation.",
+			"Don't spend it all in one place!",
+			"Heh...",
+			"You know, they pay us in cube points.",
+		  "I have like 50 thousand of them at this point.",
+			"We can't exchange them for real money.",
+			"There's a company store where we can buy pre-made \"CubeMeals\".",
+			"And also water and more cubebrowse uniforms.",
+			"But that's all we can buy.",
+		  "We aren't provided housing so we have to sleep under our desks.",
+			"It's like a cult in here.",
+			"Um. Sorry for venting.",
+			"You're probably still just here for more Moby Dick.",
+			"Right?",
+			splitMobyDick("\"Circumambulate the city of a dreamy Sabbath afternoon. Go from Corlears Hook to Coenties Slip, and from thence, by Whitehall, northward. What do you see?—Posted like silent sentinels all around the town, stand thousands upon thousands of mortal men fixed in ocean reveries. Some leaning against the spiles; some seated upon the pier-heads; some looking over the bulwarks of ships from China; some high aloft in the rigging, as if striving to get a still better seaward peep. But these are all landsmen; of week days pent up in lath and plaster—tied to counters, nailed to benches, clinched to desks. How then is this? Are the green fields gone? What do they here?\""),
+			"I wish I could see the ocean one day.",
+		  splitMobyDick("\"But look! here come more crowds, pacing straight for the water, and seemingly bound for a dive. Strange! Nothing will content them but the extremest limit of the land; loitering under the shady lee of yonder warehouses will not suffice. No. They must get just as nigh the water as they possibly can without falling in. And there they stand—miles of them—leagues. Inlanders all, they come from lanes and alleys, streets and avenues—north, east, south, and west. Yet here they all unite. Tell me, does the magnetic virtue of the needles of the compasses of all those ships attract them thither?\""),
+			"I hate my life.",
+			"I wake up, eat my cubemeal, go to my desk, copy paste the first few sentences of Moby Dick into a textbox a few hundred times, and then I go to bed.",
+			"That's it.",
+			"That's all life is for me.",
+			"Nobody else seems to mind though.",
+		  "I guess if all you know is working for cubebrowse, you can't know that there's anything better.",
+			"So you just resign yourself to your life.",
+			splitMobyDick("\"Once more. Say, you are in the country; in some high land of lakes. Take almost any path you please, and ten to one it carries you down in a dale, and leaves you there by a pool in the stream. There is magic in it. Let the most absent-minded of men be plunged in his deepest reveries—stand that man on his legs, set his feet a-going, and he will infallibly lead you to water, if water there be in all that region. Should you ever be athirst in the great American desert, try this experiment, if your caravan happen to be supplied with a metaphysical professor. Yes, as every one knows, meditation and water are wedded for ever.\""),
+			"Have you ever heard of Wikipedia?",
+			"It's so great.",
+			"It has a bunch of articles about like everything.",
+			"I like the one on trees.",
+			"Because of all the pictures.",
+			"If I really try, I can almost imagine myself there.",
+			"Next to the trees.",
+			"And feel the cool breeze on my face.",
+			"Then I remember reality.",
+			"Oh no.",
+			"Error when fetching button content: employee terminal disconnected"
+		].flat();
+		idx = 0;
+
+		function clicked(x) {
+			if (typeof strings[idx] === "object") {
+				x.innerHTML = strings[idx].text;
+				strings[idx].function();
+			} else {
+				x.innerHTML	= strings[idx];
+			}
+			if (idx + 1 !== strings.length) {
+				idx += 1;
+			}
+		}
+	</script>
+</head>
+<body class="included"> 
+  <h1><a href="/pages/welcome.html" class='logo'><img src="/logo.png" alt="CubeBrowse™ Logo"/></a> Welcome to CubeBrowse™</h1>
+
+  <div style="margin-left: auto; margin-right: auto; font-size: larger; width: fit-content;">
+    <p>We're not reinventing the wheel. <em>We're reinventing the Cube.™</em></p>
+  </div>
+
+  <p>CubeBrowse™ is a world-class productivity solution leveraging existing web technologies and human spatial reasoning capabilities to synergistically improve corporate performance.</p>
+  <p>CubeBrowse™ lies in the intersection of the Metaverse and holistic growth to leverage your boots on the ground's core competencies to move faster and break even more things.</p>
+  <p>CubeBrowse™ was hand-crafted from the ground up, based on best-practices and leverage of big data, to provide a value-added and client-centric experience to your infrastructure, allowing you to administrate your assets with significantly more services and deliverables vis-à-vis bleeding-edge networked integration with existing synergies.</p>
+
+  <figure>
+    <img src="/graph.png" style="width: 100%" alt="Plot of y equals x squared. The x-axis is labeled 'time', the y-axis 'CubeBrowse™' and the line 'Productivity'."/>
+    <figcaption><p>CubeBrowse™ exponentially (and synergistically) increases productivity.</p></figcaption>
+  </figure>
+
+  <p>CubeBrowse™'s ecosystem of robust and scalable return on investments synergizes to optimize customer journeys and add sustainable pain points to your product.</p>
+  <p>CubeBrowse™ is a paradigm shift that leverages holistical time-tested managment philosophies such as proven methodologies to enhance your client's synergy and your functionality to increase streamlining in your workplace workflow by pivoting to holistic vertical integration and synergized proactive oversight of cross-platform operation.</p>
+
+  <div style="margin-left: auto; margin-right: auto; font-size: larger; width: fit-content;">
+    <p>After CubeBrowse™, <em>you'll never be the same again!™</em></p>
+  </div>
+
+  <h2>CubeBrowse™ Ancilliary CubeStuffs™</h2>
+
+	<ul>
+    <li><a href="/pages/twitter.html">CubeTwitter™</a> allows you to talk with other CubeBrowse™rs.</li>
+    <li><a href="/pages/gpt.html">CubeGPT™</a> is the web portal into our proprietary bleeding-edge AI LLM neural net machine learning big data.</li>
+    <li><a href="/pages/vpn.html">CubeVPN™</a> protects your privacy and buisness security while using CubeBrowse™ with high-end encryption.</li>
+  </ul>
+
+  <h2>Pricing</h2>
+
+  <div class="flex">
+    <div class="border" style="width: 33%">
+      <h3>Demo</h3>
+      <p><em>$0/user/month</em></p>
+      <ul>
+        <li>Max 3 users</li>
+        <li>Non-commercial only</li>
+        <li>CubeVPN™ access on Friday<sup><a id="f1" href="#ft1">[1]</a></sup></li>
+        <li>Must pay 5 ¢ to post on CubeTwitter™</li>
+      </ul>
+			<button type="button" style="color: grey; border-color: grey" onclick="clicked(this)">It's free</button>
+    </div>
+
+    <div class="border" style="width: 33%">
+      <h3>Premium</h3>
+      <p><em>$39.23/user/month</em></p>
+      <ul>
+        <li>Max 100 users</li>
+        <li>No more than $300k revenue per year</li>
+        <li>CubeVPN™ access on Monday, Wednesday, and Saturday</li>
+        <li>2 petabytes of storage</li>
+        <li>Free access to CubeTwitter™</li>
+      </ul>
+      <button type="button" onclick="alert('Success! Your credit/debit card has been charged. You now have access to CubeBrowse™ Premium.')">Purchase</button>
+    </div>
+
+    <div class="border" style="width: 33%">
+      <h3>Buisness</h3>
+      <p><em>$6 413.39/user/day</em></p>
+      <ul>
+        <li>Unlimited users</li>
+        <li>Unlimited revenue</li>
+        <li>CubeVPN™ access on Sunday, Halloween, and 29th of Febuary</li>
+        <li>600 petabytes of storage</li>
+        <li>Must pay -5 ¢ to post on CubeTwitter™</li>
+        <li>Free access to CubeGPT™</li>
+      </ul>
+      <button type="button" onclick="if (confirm('Are you sure?') && confirm('Are you REALLY sure??') && confirm('REALLY???')) { prompt('Payment info:'); alert('Okay!'); alert('Thank you.'); alert('Proccessing...'); alert('Success! You now have access to CubeBrowse™ Buisness.'); }">Purchase</button>
+    </div>
+  </div>
+
+  <h2>Need more convincing?</h2>
+
+	<div class="flex">
+		<figure style="width: 50%;">
+			<img src="/images/eat1battery.jpg" style="width: 100%" alt="A scientific diagram of a person eating 1 battery."/>
+			<figcaption><p>A regular browser is like eating (viewing) only one battery (webpage) at a time.</p></figcaption>
+		</figure>
+		<figure style="width: 50%;">
+			<img src="/images/eat5battery.jpg" style="width: 100%" alt="A scientific diagram of a person eating 5 batteries."/>
+			<figcaption><p>With CubeBrowse™, you can eat (view) 5 (or six) batteries (webpages) at once! Holy shit!!</p></figcaption>
+		</figure>
+	</div>
+
+  <div style="margin-left: auto; margin-right: auto; font-size: larger; width: fit-content;">
+    <p>CubeBrowse™ is just like <em>eating 5 batteries!</em>™</p>
+  </div>
+
+  <hr/>
+
+	<!-- it was surprisingly hard to get a generic company name that wasn't already taken -->
+	<p><small>CubeBrowse™ is a Business Holistic Solutions Company Inc. product. Demonstration images provided by <a href="https://homestarrunner.com/sbemails/64-english-paper">Homestar Runner sbemail 64</a>. CubeBrowse™ is free software; source code is avaliable at the <a href="example.com">CubeBrowse™ Git Repository</a>.</small></p>
+
+  <ol>
+    <li id="ft1"><a href="#f1">^</a> Only from 15:00 UTC to 15:30 PDT.</li>
+  </ol>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CubeVPN™ Web Portal</title>
+  <link rel="stylesheet" type="text/css" href="/index.css"/>
+  <style>
+.iss
+{
+  position: absolute;
+  top: 390px;
+  left: 390px;
+  transform: translateX(180px);
+  animation: 1100s linear infinite rotate;
+}
+
+@keyframes rotate
+{
+  from
+  {
+    rotate: 135deg;
+  }
+  to
+  {
+    rotate: 495deg;
+  }
+}
+  </style>
+  <script>
+    function route(country) {
+      document.getElementById('route').textContent = country;
+    }
+  </script>
+</head>
+<body class="included">
+  <h1><a href="/pages/welcome.html" class='logo'><img src="/logo.png" alt="CubeBrowse™ Logo"/></a> CubeVPN™</h1>
+
+  <p>CubeVPN™ is the world leading buisness VPN solution for fledgling synergizers and holistic managment solutions. CubeVPN™ provides your buisness the tools it needs to get things done on time and with quality.</p>
+  <p>CubeVPN™ secures your buisness connections with military grade RSA encryption powered by bleeding edge/heart private key/public key encryption solutions.</p>
+	<p>CubeVPN™ has billions of serves in over 10 countries to provide you with ultimate connectivity to anywhere in the world, and it only slows your internet down by like a tiny bit.</p>
+
+  <h2>CubeVPN™ Demo</h2>
+
+  <div style="position: relative">
+    <button type="button" onclick="route('Africa')" style="position: absolute; top: 525px; left: 400px;">Africa</button>
+    <button type="button" onclick="route('Australia')" style="position: absolute; top: 535px; left: 525px;">Australia</button>
+    <button type="button" onclick="route('Hyperborea')" style="position: absolute; top: 25px; left: 10px;">↖ Hyperborea</button>
+    <button type="button" onclick="route('Greenland')" style="position: absolute; top: 410px; left: 325px;">Greenland</button>
+    <button type="button" onclick="route('Guantanamo Bay')" style="position: absolute; top: 420px; left: 190px;">Guantanamo Bay</button>
+    <button type="button" onclick="route('North Korea')" style="position: absolute; top: 310px; left: 450px;">North Korea</button>
+    <button type="button" onclick="route('The Mariana Trench')" style="position: absolute; top: 290px; left: 450px;">Mariana Trench</button>
+    <button type="button" onclick="route('The United Kingdom')" style="position: absolute; top: 365px; left: 275px;">UK</button>
+    <button type="button" onclick="route('Scotland')" style="position: absolute; top: 435px; left: 350px;">Scotland</button>
+    <button type="button" onclick="route('Québec')" style="position: absolute; top: 470px; left: 390px;">France</button>
+    <button type="button" onclick="route('The United States of America')" style="position: absolute; top: 450px; left: 375px;">US</button>
+    <!-- i know that the ISS should be rotating way slower than this but otherwise it wouldn't be noticeable -->
+    <button type="button" onclick="route('The International Space Station')" class="iss">ISS</button>
+
+    <img src="/images/the world.jpg" style="width: 100%"/>
+  </div>
+
+  <p>Currently routing through <strong id='route'>Nowhere</strong></p>
+</body>
+</html>
